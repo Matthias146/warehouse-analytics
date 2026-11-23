@@ -18,7 +18,7 @@ This project generates realistic warehouse data and analyzes it to make order pi
 Requirements: [uv](https://docs.astral.sh/uv/)
 
 ```bash
-git clone clone https://github.com/Matthias146/warehouse-analytics.git
+git clone https://github.com/Matthias146/warehouse-analytics.git
 cd warehouse-analytics
 uv sync
 ```
