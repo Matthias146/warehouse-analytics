@@ -12,3 +12,20 @@ This project generates realistic warehouse data and analyzes it to make order pi
 - ABC/XYZ analysis of spare parts
 - Dashboard for warehouse KPIs
 - Demand forecasting for spare parts
+
+## Setup
+
+Requirements: [uv](https://docs.astral.sh/uv/)
+
+```bash
+git clone matthias146/warehouse-analytics
+cd warehouse-analytics
+uv sync
+```
+
+## Running tests and linting
+
+```bash
+uv run pytest
+uv run ruff check
+```
