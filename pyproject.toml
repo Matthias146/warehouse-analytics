@@ -1,7 +1,7 @@
 [project]
 name = "warehouse-analytics"
 version = "0.1.0"
-description = "Add your description here"
+description = "An analytics platform for a simulated spare parts warehouse for trucks, cars and commercial vehicles."
 readme = "README.md"
 authors = [
     { name = "Matthias Hammelehle", email = "209659387+Matthias146@users.noreply.github.com" }
