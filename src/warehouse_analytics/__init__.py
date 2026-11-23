@@ -1,2 +1,2 @@
 def main() -> None:
-    print("Hello from warehouse-analytics!")
+    print("Warehouse-analytics!")
