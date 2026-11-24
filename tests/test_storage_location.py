@@ -33,3 +33,24 @@ def test_parse_lowest_location_code():
 def test_parse_location_code_rejects_empty_string():
     with pytest.raises(ValueError):
         parse_location_code("")
+
+
+@pytest.mark.parametrize(
+    "code",
+    [
+        "a-01-01-1",
+        "1-01-01-1",
+        "A-1-01-1",
+        "A-101-01-1",
+        "A-00-01-1",
+        "A-01-01-0",
+        "A-01-01-7",
+        " A-01-01-1",
+        "A-01-01-1 ",
+        "A- 01-01-1",
+        "A-01-00-1"
+    ],
+)
+def test_parse_location_code_rejects_invalid_code(code):
+    with pytest.raises(ValueError):
+        parse_location_code(code)
