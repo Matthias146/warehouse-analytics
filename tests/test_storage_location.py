@@ -48,7 +48,7 @@ def test_parse_location_code_rejects_empty_string():
         " A-01-01-1",
         "A-01-01-1 ",
         "A- 01-01-1",
-        "A-01-00-1"
+        "A-01-00-1",
     ],
 )
 def test_parse_location_code_rejects_invalid_code(code):
