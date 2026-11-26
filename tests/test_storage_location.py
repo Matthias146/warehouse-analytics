@@ -36,22 +36,22 @@ def test_parse_location_code_rejects_empty_string():
 
 
 @pytest.mark.parametrize(
-    "code",
+    "code, part",
     [
-        "a-01-01-1",
-        "1-01-01-1",
-        "A-1-01-1",
-        "A-101-01-1",
-        "A-00-01-1",
-        "A-01-01-0",
-        "A-01-01-7",
-        " A-01-01-1",
-        "A-01-01-1 ",
-        "A- 01-01-1",
-        "A-01-00-1",
-        "Ä-01-01-1",
+        ("a-01-01-1", "aisle"),
+        ("1-01-01-1", "aisle"),
+        ("A-1-01-1", "rack"),
+        ("A-101-01-1", "rack"),
+        ("A-00-01-1", "rack"),
+        ("A-01-01-0", "level"),
+        ("A-01-01-7", "level"),
+        (" A-01-01-1", "aisle"),
+        ("A-01-01-1 ", "level"),
+        ("A- 01-01-1", "rack"),
+        ("A-01-00-1", "slot"),
+        ("Ä-01-01-1", "aisle"),
     ],
 )
-def test_parse_location_code_rejects_invalid_code(code):
-    with pytest.raises(ValueError):
+def test_parse_location_code_rejects_invalid_code(code, part):
+    with pytest.raises(ValueError, match=part):
         parse_location_code(code)
