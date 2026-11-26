@@ -9,6 +9,13 @@ class StorageLocation:
     level: str
 
 
+def _check_number(name: str, value: str, digits: int, max_value: int) -> None:
+    if len(value) != digits or not value.isdigit() or not 1 <= int(value) <= max_value:
+        raise ValueError(
+            f"Invalid {name} '{value}': expected {digits} digit from 1 to {max_value}"
+        )
+
+
 def parse_location_code(code: str) -> StorageLocation:
     parts = code.split("-")
     if len(parts) != 4:
@@ -19,12 +26,9 @@ def parse_location_code(code: str) -> StorageLocation:
     rack = parts[1]
     slot = parts[2]
     level = parts[3]
-    if len(aisle) != 1 or not "A" <= aisle <= "Z" or not aisle.isupper():
+    if len(aisle) != 1 or not "A" <= aisle <= "Z":
         raise ValueError(f"Invalid aisle '{aisle}': expected one uppercase letter")
-    if len(rack) != 2 or not rack.isdigit() or not 1 <= int(rack) <= 99:
-        raise ValueError(f"Invalid rack '{rack}': expected 2 digits from 01 to 99")
-    if len(slot) != 2 or not slot.isdigit() or not 1 <= int(slot) <= 99:
-        raise ValueError(f"Invalid slot '{slot}': expected 2 digits from 01 to 99")
-    if len(level) != 1 or not level.isdigit() or not 1 <= int(level) <= 6:
-        raise ValueError(f"Invalid level '{level}': expected 1 digit from 1 to 6")
+    _check_number("rack", rack, digits=2, max_value=99)
+    _check_number("slot", slot, digits=2, max_value=99)
+    _check_number("level", level, digits=1, max_value=6)
     return StorageLocation(aisle=aisle, rack=rack, slot=slot, level=level)
