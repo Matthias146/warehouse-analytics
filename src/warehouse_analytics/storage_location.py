@@ -8,6 +8,9 @@ class StorageLocation:
     slot: str
     level: str
 
+    def to_code(self) -> str:
+        return f"{self.aisle}-{self.rack}-{self.slot}-{self.level}"
+
 
 def _check_number(name: str, value: str, digits: int, max_value: int) -> None:
     if len(value) != digits or not value.isdigit() or not 1 <= int(value) <= max_value:
