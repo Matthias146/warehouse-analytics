@@ -13,7 +13,12 @@ class StorageLocation:
 
 
 def _check_number(name: str, value: str, digits: int, max_value: int) -> None:
-    if len(value) != digits or not value.isdigit() or not 1 <= int(value) <= max_value:
+    if (
+        len(value) != digits
+        or not value.isascii()
+        or not value.isdigit()
+        or not 1 <= int(value) <= max_value
+    ):
         raise ValueError(
             f"Invalid {name} '{value}': expected {digits} digit from 1 to {max_value}"
         )
