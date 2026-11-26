@@ -19,7 +19,7 @@ def parse_location_code(code: str) -> StorageLocation:
     rack = parts[1]
     slot = parts[2]
     level = parts[3]
-    if len(aisle) != 1 or not aisle.isalpha() or not aisle.isupper():
+    if len(aisle) != 1 or not "A" <= aisle <= "Z" or not aisle.isupper():
         raise ValueError(f"Invalid aisle '{aisle}': expected one uppercase letter")
     if len(rack) != 2 or not rack.isdigit() or not 1 <= int(rack) <= 99:
         raise ValueError(f"Invalid rack '{rack}': expected 2 digits from 01 to 99")
