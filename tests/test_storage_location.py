@@ -55,3 +55,9 @@ def test_parse_location_code_rejects_empty_string():
 def test_parse_location_code_rejects_invalid_code(code, part):
     with pytest.raises(ValueError, match=part):
         parse_location_code(code)
+
+
+def test_location_converts_back_to_code():
+    location = parse_location_code("A-03-12-2")
+
+    assert location.to_code() == "A-03-12-2"
