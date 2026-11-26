@@ -50,6 +50,8 @@ def test_parse_location_code_rejects_empty_string():
         ("A- 01-01-1", "rack"),
         ("A-01-00-1", "slot"),
         ("Ä-01-01-1", "aisle"),
+        ("A-01-01", "location code"),
+        ("A-01-01-1-1", "location code"),
     ],
 )
 def test_parse_location_code_rejects_invalid_code(code, part):
